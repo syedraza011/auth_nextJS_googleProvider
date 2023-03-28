@@ -1,0 +1,33 @@
+import react from 'react'
+import { useSession,signIn,signOut } from 'next-auth/react'
+const login=()=>{
+  
+  
+  if(session){
+    return(
+<>
+<div>
+<p>Welcome, {session.user.email}</p>
+<img src={session.user.image } alt={session.user.name} style={{borderRadius: '50px'}} />
+<button onClick={()=>signOut()}>Sign out</button>
+</div>
+    </>
+    );
+} else {
+    return (
+   <div>
+<p>You are not singned in.</p>
+<button onClick={()=>signIn()}>Sign in</button>
+        </div>
+    );
+
+
+
+  }
+  
+  
+  
+
+}
+
+export default login
