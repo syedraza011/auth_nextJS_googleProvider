@@ -1,6 +1,18 @@
 import react from 'react'
 import { useSession,signIn,signOut } from 'next-auth/react'
 const login=()=>{
+  useEffect =()=>{
+  async function signInWithEmail() {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: 'example@email.com',
+      password: 'example-password',
+    })
+  }
+signInWithEmail();
+  }
+
+
+
   const {data: session}=useSession();
   
   if(session){
@@ -17,6 +29,7 @@ const login=()=>{
     return (
    <div>
 <p>You are not singned in.</p>
+<button ></button>
 <button onClick={()=>signIn()}>Sign in</button>
         </div>
     );
